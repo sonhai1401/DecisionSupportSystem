@@ -11,7 +11,6 @@ Lịch sử dự đoán: Lưu và hiển thị lịch sử tất cả các dự 
 Hướng dẫn sử dụng
 1. Tải dữ liệu lên
 Ứng dụng yêu cầu người dùng tải lên một file CSV chứa dữ liệu kho hàng. Định dạng file phải có các cột dữ liệu cơ bản như:
-
 ĐVT: Đơn vị tính
 Số lượng Đầu kỳ: Số lượng tồn đầu kỳ
 Số lượng Xuất kho: Số lượng xuất kho
