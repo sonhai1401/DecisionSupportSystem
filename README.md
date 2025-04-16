@@ -11,12 +11,6 @@ Tự động lưu lịch sử các lần dự báo.
 
 Cho phép xem và xóa lịch sử dự báo.
 
-📁 Cấu trúc thư mục
-├── app.py                      # Ứng dụng chính chạy bằng Streamlit
-├── online_sales_dataset.csv   # Dataset đầu vào
-├── forecast_history.csv       # File lưu lịch sử dự báo
-├── requirements.txt           # Danh sách thư viện cần cài đặt
-├── README.md                  # Tài liệu mô tả dự án
 📊 Dữ liệu
 File dữ liệu đầu vào: online_sales_dataset.csv gồm các cột chính:
 
