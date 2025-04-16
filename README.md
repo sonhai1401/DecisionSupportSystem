@@ -1,46 +1,53 @@
 # DecisionSupportSystem
-Ứng dụng dự đoán và trực quan hóa nhu cầu sản phẩm
-hệ thống dự báo nhu cầu sản phẩm được xây dựng bằng thư viện Streamlit của Python. Hệ thống sử dụng mô hình hồi quy Random Forest để dự đoán số lượng sản phẩm sẽ được bán trong tương lai dựa trên dữ liệu bán hàng lịch sử.
+📈 Hệ Thống Dự Báo Nhu Cầu Sản Phẩm Theo Quý
+Dự án này xây dựng một hệ thống sử dụng mô hình Random Forest để dự báo nhu cầu sản phẩm (số lượng bán ra) theo quý, dựa trên dữ liệu bán hàng quá khứ. Hệ thống sử dụng giao diện Streamlit để người dùng nhập thông tin và trực quan hóa kết quả dự báo.
 
-Chuẩn bị dữ liệu:
+🚀 Tính năng chính
+Dự báo số lượng bán ra cho từng danh mục sản phẩm, năm, và quý cụ thể.
 
-Lưu trữ file dữ liệu bán hàng lịch sử của bạn trong định dạng CSV với tên online_sales_dataset.csv.
-Đặt file CSV cùng thư mục với script Python của bạn.
-Cấu trúc dữ liệu trong file CSV cần tuân theo định dạng được mô tả trong code (các cột như InvoiceDate, Quantity, UnitPrice, Discount, ShippingCost, InvoiceNo, Category).
+Trực quan hóa nhu cầu trong quá khứ và đường dự báo.
 
-Chạy ứng dụng
+Tự động lưu lịch sử các lần dự báo.
 
-Truy cập ứng dụng web bằng câu lệnh streamlit run (file python có đuôi .py)
+Cho phép xem và xóa lịch sử dự báo.
 
-Chức năng
+📁 Cấu trúc thư mục
+├── app.py                      # Ứng dụng chính chạy bằng Streamlit
+├── online_sales_dataset.csv   # Dataset đầu vào
+├── forecast_history.csv       # File lưu lịch sử dự báo
+├── requirements.txt           # Danh sách thư viện cần cài đặt
+├── README.md                  # Tài liệu mô tả dự án
+📊 Dữ liệu
+File dữ liệu đầu vào: online_sales_dataset.csv gồm các cột chính:
 
-Ứng dụng cung cấp hai chức năng chính:
+InvoiceNo, InvoiceDate, Quantity, UnitPrice, Discount, ShippingCost, Category
 
-Dự báo và trực quan hóa:
-Chọn năm, quý và danh mục sản phẩm để thực hiện dự báo.
-Xem hệ số R-squared và RMSE của mô hình để đánh giá độ chính xác.
-Dự báo nhu cầu cho quý đã chọn.
-Xem biểu đồ so sánh giữa dữ liệu lịch sử và dự báo cho danh mục đã chọn.
-Xem lịch sử dự báo:
-Xem lại các dự báo đã thực hiện trước đó.
-Xóa lịch sử dự báo nếu cần.
-Mô tả chi tiết về code
+Các trường này sẽ được xử lý và tổng hợp theo Quarter, Year, Category để tạo ra đặc trưng cho mô hình.
+🧠 Mô hình học máy
+Mô hình: RandomForestRegressor
 
-Script thực hiện các bước tiền xử lý dữ liệu như:
+Các đặc trưng đầu vào:
 
-Chuyển đổi định dạng ngày tháng.
-Tạo các đặc trưng mới (Revenue, DayOfWeek, Month, Year, Quarter).
-Thực hiện tổng hợp dữ liệu theo danh mục, năm và quý.
-Thêm các đặc trưng bổ sung (QuarterIndex, QuarterLabel).
-Tạo biến giả cho các danh mục sản phẩm.
+QuarterIndex, TotalRevenue, AvgDiscount, AvgShippingCost, TotalTransactions, Category (dưới dạng one-hot)
 
-Chuẩn hóa dữ liệu.
-Script chia tập dữ liệu thành tập huấn luyện và tập test.
-Script sử dụng GridSearchCV để tìm kiếm tham số tối ưu cho mô hình Random Forest.
-Script huấn luyện mô hình Random Forest với tham số tối ưu.
-Script dự đoán nhu cầu trên tập test và tính toán các chỉ số đánh giá mô hình (R-squared, RMSE).
-Script sử dụng Streamlit để tạo giao diện người dùng web.
-Người dùng có thể lựa chọn chức năng mong muốn.
-Người dùng có thể nhập thông tin để dự báo nhu cầu cho một danh mục sản phẩm cụ thể trong một quý cụ thể.
-Ứng dụng hiển thị kết quả dự báo và biểu đồ so sánh với dữ liệu lịch sử.
-Người dùng có thể xem lại lịch sử dự báo và xóa lịch sử nếu cần.
+Được tối ưu bằng GridSearchCV trên tập huấn luyện.
+
+🛠️ Cài đặt
+1. Clone dự án
+```bash
+https://github.com/sonhai1401/DecisionSupportSystem.git
+```
+2. Tạo môi trường ảo (tuỳ chọn)
+```bash
+python -m venv venv
+source venv/bin/activate  # MacOS/Linux
+venv\Scripts\activate     # Windows
+```
+3. Cài đặt thư viện
+```bash
+pip install -r requirements.txt
+```
+▶️ Chạy ứng dụng
+```bash
+streamlit run app.py
+```
